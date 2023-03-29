@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("// function createElement () {\r\n//     const element = document.createElement('div')\r\n//     element.innerHTML = '孔子曰：中午不睡，下午崩溃!孟子曰：孔子说的对!';\r\n//\r\n//     return element\r\n// }\r\n// document.body.appendChild(createElement());\r\nconsole.log('hello world!')\r\n\n\n//# sourceURL=webpack://webpack-loader-plugin/./src/index.js?");
+eval("// function createElement () {\r\n//     const element = document.createElement('div')\r\n//     element.innerHTML = '孔子曰：中午不睡，下午崩溃!孟子曰：孔子说的对!';\r\n//\r\n//     return element\r\n// }\r\n// document.body.appendChild(createElement());\r\n\r\nconsole.log('hello world!')\r\n\n\n//# sourceURL=webpack://webpack-loader-plugin/./src/index.js?");
 
 /***/ })
 
