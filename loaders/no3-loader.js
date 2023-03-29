@@ -7,5 +7,12 @@
  */
 module.exports = function (content, map, meta) {
     console.log('333')
-    return content;
+    // return content;
+    const callback = this.async();
+    setTimeout(()=>{
+        callback(null,content)
+    },1000)
+}
+module.exports.pitch = function () {
+    console.log('pitch 333');
 }

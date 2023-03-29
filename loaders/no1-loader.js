@@ -7,5 +7,10 @@
  */
 module.exports = function (content, map, meta) {
     console.log('111')
-    return content;
+    // return content;
+    //等价于
+    this.callback(null,content,map,meta);
+}
+module.exports.pitch = function () {
+    console.log('pitch 111');
 }
