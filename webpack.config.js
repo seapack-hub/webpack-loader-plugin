@@ -14,10 +14,18 @@ module.exports = {
             {
                 test:/\.js$/,
                 use:[
-                    {loader:'./loaders/no1-loader.js'}
+                    'no1-loader',
+                    'no2-loader',
+                    'no3-loader'
                 ]
             }
         ],
+    },
+    resolveLoader: {
+        modules: [
+            'node_modules',
+            path.resolve(__dirname,'loaders')
+        ]
     },
     plugins: [
         new HtmlWebpackPlugin({

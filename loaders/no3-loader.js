@@ -6,6 +6,6 @@
  * @param meta 别的loader传递的数据。
  */
 module.exports = function (content, map, meta) {
-    console.log('111')
+    console.log('333')
     return content;
 }
