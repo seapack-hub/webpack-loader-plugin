@@ -15,7 +15,13 @@ module.exports = {
                 test:/\.js$/,
                 use:[
                     'no1-loader',
-                    'no2-loader',
+                    {
+                        loader:'no2-loader',
+                        options:{
+                            name:'jack',
+                            age:18
+                        }
+                    },
                     'no3-loader'
                 ]
             }
