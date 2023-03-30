@@ -22,7 +22,15 @@ module.exports = {
                             age:18
                         }
                     },
-                    'no3-loader'
+                    'no3-loader',
+                    {
+                        loader: 'babelLoader',
+                        options: {
+                            presets: [
+                                '@babel/preset-env'
+                            ]
+                        }
+                    }
                 ]
             }
         ],
