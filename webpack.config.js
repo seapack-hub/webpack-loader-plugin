@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // const No1WebpackPlugin = require('./plugins/No1-webpack-plugin');
 const PluginCompiler = require('./plugins/plugin1');
+const PluginCompilation = require('./plugins/plugin2');
 
 module.exports = {
     entry: './src/index.js',
@@ -47,7 +48,8 @@ module.exports = {
             title: 'custom-plugin'
         }),
         new CleanWebpackPlugin(),
-        new PluginCompiler()
+        new PluginCompiler(),
+        new PluginCompilation()
     ],
     mode:'development'
 }
