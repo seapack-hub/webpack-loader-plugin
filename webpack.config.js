@@ -16,23 +16,23 @@ module.exports = {
             {
                 test:/\.js$/,
                 use:[
-                    'no1-loader',
-                    {
-                        loader:'no2-loader',
-                        options:{
-                            name:'jack',
-                            age:18
-                        }
-                    },
-                    'no3-loader',
-                    {
-                        loader: 'babelLoader',
-                        options: {
-                            presets: [
-                                '@babel/preset-env'
-                            ]
-                        }
-                    }
+                    // 'no1-loader',
+                    // {
+                    //     loader:'no2-loader',
+                    //     options:{
+                    //         name:'jack',
+                    //         age:18
+                    //     }
+                    // },
+                    // 'no3-loader',
+                    // {
+                    //     loader: 'babelLoader',
+                    //     options: {
+                    //         presets: [
+                    //             '@babel/preset-env'
+                    //         ]
+                    //     }
+                    // }
                 ]
             }
         ],
@@ -47,9 +47,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'custom-plugin'
         }),
-        new CleanWebpackPlugin(),
-        new PluginCompiler(),
-        new PluginCompilation()
+        // new CleanWebpackPlugin(),
+        // new PluginCompiler(),
+        // new PluginCompilation()
     ],
     mode:'development'
 }

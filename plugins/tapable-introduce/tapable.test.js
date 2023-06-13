@@ -18,9 +18,11 @@ class Lesson{
         //初始化hooks容器
         this.hooks = {
             // 同步hook(钩子)，任务会依次执行
-            go:new SyncBailHook(['address']),
+            // go:new SyncBailHook(['address']),
             // 异步执行
-            leave:new AsyncSeriesHook(['name','age'])
+            leave:new AsyncSeriesHook(['name','age']),
+
+            go:new SyncHook()
         }
     }
 
