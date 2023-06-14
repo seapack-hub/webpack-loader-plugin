@@ -44,10 +44,13 @@ methodsNeedChange.forEach(name=>{
                 inserted = args.slice(2);
                 break;
         }
+        console.log(`${name}方法，`,inserted);
         //判断是否有新项插入，调用Observer实例的observeArray对数组每一项进行观测。
         if(inserted){
             ob.observeArray(inserted);
         }
+        //数组改变时通知更新
+        ob.dep.notify();
         return result;
     },false)
 })

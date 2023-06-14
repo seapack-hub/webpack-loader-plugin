@@ -17,7 +17,7 @@ export default class Observer{
 
         //判断类型是否是数组，如是数组，使用arrayMethods替换数组的原型
         if(Array.isArray(value)){
-            // Object.setPrototypeOf(value,arrayMethods);
+            Object.setPrototypeOf(value,arrayMethods);
             // 如果数组里面还包含数组 需要递归判断
             this.observeArray(value)
         }else{
