@@ -1,2 +1,2 @@
 import Vue from './Vue'
-Window.Vue = Vue;
+window.Vue = Vue;

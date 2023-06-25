@@ -2,8 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // const No1WebpackPlugin = require('./plugins/No1-webpack-plugin');
-const PluginCompiler = require('./plugins/plugin1');
-const PluginCompilation = require('./plugins/plugin2');
+// const PluginCompiler = require('./plugins/plugin1');
+// const PluginCompilation = require('./plugins/plugin2');
 
 module.exports = {
     entry: './src/index.js',
@@ -11,45 +11,51 @@ module.exports = {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
-    module: {
-        rules:[
-            {
-                test:/\.js$/,
-                use:[
-                    // 'no1-loader',
-                    // {
-                    //     loader:'no2-loader',
-                    //     options:{
-                    //         name:'jack',
-                    //         age:18
-                    //     }
-                    // },
-                    // 'no3-loader',
-                    // {
-                    //     loader: 'babelLoader',
-                    //     options: {
-                    //         presets: [
-                    //             '@babel/preset-env'
-                    //         ]
-                    //     }
-                    // }
-                ]
-            }
-        ],
+    devServer: {
+        // 端口号
+        port: 8088,
+        // 静态资源文件夹
+        static: './public'
     },
-    resolveLoader: {
-        modules: [
-            'node_modules',
-            path.resolve(__dirname,'loaders')
-        ]
-    },
+    // module: {
+    //     rules:[
+    //         {
+    //             test:/\.js$/,
+    //             use:[
+    //                 // 'no1-loader',
+    //                 // {
+    //                 //     loader:'no2-loader',
+    //                 //     options:{
+    //                 //         name:'jack',
+    //                 //         age:18
+    //                 //     }
+    //                 // },
+    //                 // 'no3-loader',
+    //                 // {
+    //                 //     loader: 'babelLoader',
+    //                 //     options: {
+    //                 //         presets: [
+    //                 //             '@babel/preset-env'
+    //                 //         ]
+    //                 //     }
+    //                 // }
+    //             ]
+    //         }
+    //     ],
+    // },
+    // resolveLoader: {
+    //     modules: [
+    //         'node_modules',
+    //         path.resolve(__dirname,'loaders')
+    //     ]
+    // },
     plugins: [
-        new HtmlWebpackPlugin({
-            title: 'custom-plugin'
-        }),
-        // new CleanWebpackPlugin(),
-        // new PluginCompiler(),
-        // new PluginCompilation()
+        // new HtmlWebpackPlugin({
+        //     title: 'custom-plugin'
+        // }),
+       new HtmlWebpackPlugin({
+           template:'./public/index.html'
+       })
     ],
     mode:'development'
 }
