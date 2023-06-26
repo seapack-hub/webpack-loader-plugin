@@ -32,7 +32,6 @@ export default class Vue{
 
     _initWatch(){
         let self = this;
-        console.log('---',self);
         //获取参数里面的watch项
         let watch = this.$options.watch || {};
         //设置watch项里面的监听

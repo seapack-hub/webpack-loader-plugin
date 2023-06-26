@@ -1,3 +1,4 @@
+import Watcher from "../vue2ResponsivePrinciple/Watcher";
 export default class Compile{
     constructor(el,vue) {
         //vue实例
@@ -34,14 +35,20 @@ export default class Compile{
     compile(el){
         let childNodes = el.childNodes;
         let self = this;
+
+        //捕获{{}}文本数据
+        let reg = /\{\{(.*)\}\}/;
+
         childNodes.forEach(node=>{
             //获取节点的文本
             let text = node.textContent;
             //nodeType值为1，代表元素节点
             if(node.nodeType == 1){
                 self.compileElement(node);
-            }else if(node.nodeType == 3){
+            }else if(node.nodeType == 3 && reg.test(text)){
                 //nodeType值为3，代表文本节点
+                let name = text.match(reg)[1];
+                self.compileText(node,name);
             }
         })
     }
@@ -51,6 +58,7 @@ export default class Compile{
         let nodeAttrs = node.attributes;
         //获取的nodeAttrs是一个类数组对象,将其转化为数组对象
         let nodeAttrsArray = [...nodeAttrs];
+        let self = this;
         nodeAttrsArray.forEach(attr=>{
             //在这里分析指令
             let attrName = attr.name;
@@ -61,11 +69,60 @@ export default class Compile{
             if(attrName.indexOf('v-') == 0){
                 //双向绑定
                 if(dir == 'model'){
-                    console.log('捕捉到v-model指令')
+                    // console.log('捕捉到v-model指令',node);
+                    //将实际值放入v-model绑定的值
+                    //此时vue中的数据改变会影响界面的数据，数据从vue流向界面。
+                    new Watcher(self.$vue,value,value=>{
+                        node.value = value;
+                    });
+                    //读取绑定的值
+                    let v = self.getVueVal(self.$vue,value);
+                    node.value = v;
+
+                    //添加界面数据变动影响vue里面的数据，通过给元素添加监听事件实现。
+                    node.addEventListener('input',e=>{
+                        let newVal = e.target.value;
+                        self.setVueVal(self.$vue,value,newVal);
+                        v = newVal;
+                    })
+
                 }else if(dir == 'if'){
-                    console.log('捕捉到v-if指令')
+                    // console.log('捕捉到v-if指令')
                     //v-if指令
                 }
+            }
+        })
+    }
+
+    compileText(node,name){
+        //之前已经把data里面的数据循环遍历放到vue上了，所以可以传入vue
+        node.textContent = this.getVueVal(this.$vue,name);
+        //设置监控响应
+        new Watcher(this.$vue,name,(newValue)=>{
+            node.textContent = newValue;
+        })
+    }
+
+    //获取使用的值a.b.n
+    getVueVal(vue,exp){
+        let val = vue;
+        exp = exp.split(".");
+        exp.forEach(key=>{
+            val = val[key];
+        })
+        return val;
+    }
+
+    //修改值
+    setVueVal(vue,exp,value){
+        let val = vue;
+        exp = exp.split(".");
+        exp.forEach((key,i)=>{
+            //获取最底层的值修改
+            if(i< exp.length - 1){
+                val = val[key]
+            }else{
+                val[key] = value;
             }
         })
     }

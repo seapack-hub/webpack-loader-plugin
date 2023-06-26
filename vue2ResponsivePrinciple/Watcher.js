@@ -43,7 +43,6 @@ export default class Watcher{
     getAndInvoke(ob){
         //获取新值
         const value = this.get();
-        console.log('--新值--',value);
         //如果新值不等于旧值，或新值为一个对象
         if(value !== this.value||typeof value == 'object'){
             //存储旧值

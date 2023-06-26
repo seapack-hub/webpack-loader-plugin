@@ -6,25 +6,32 @@
 </head>
 <body>
     <div id="app">
-        你好{{a}}
+        {{a.b.n}}
         <h2 id="h2" class="h2class" v-if="b">1234</h2>
-        <span v-model="a">测试</span>
+        <input type="text" v-model="a.b.n"/>
     </div>
 </body>
 <script>
+    let vm = null;
     setTimeout(()=>{
-        var vm = new Vue({
+        vm = new Vue({
             el:"#app",
             data:{
-                a:5,
-                b:false
+                a:{
+                    b:{
+                        n:10
+                    }
+                },
+                b:false,
+                c:55
             },
             watch:{
-                a:function(newValue,oldValue){
+                b:function(newValue,oldValue){
                     console.log(newValue,oldValue)
                 }
             }
         });
-    },500)
+    },500);
+    console.log(vm);
 </script>
 </html>

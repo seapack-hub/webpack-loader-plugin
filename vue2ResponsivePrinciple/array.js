@@ -44,7 +44,7 @@ methodsNeedChange.forEach(name=>{
                 inserted = args.slice(2);
                 break;
         }
-        console.log(`${name}方法，`,inserted);
+        // console.log(`${name}方法，`,inserted);
         //判断是否有新项插入，调用Observer实例的observeArray对数组每一项进行观测。
         if(inserted){
             ob.observeArray(inserted);

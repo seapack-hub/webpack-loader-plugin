@@ -27,7 +27,7 @@ export function defineReactive(data,key,val){
             //这里需要用Dep类上的target，全局变量，不是Dep的实例dep
             //Dep类的实例dep，在这里的作用是收集监听元素的Watcher实例
             //Watcher实例存放到公共变量 Dep上
-            console.log(key,"被访问了");
+            // console.log(key,"被访问了");
             if(Dep.target){
                 dep.depend()
                 if(childOb){
@@ -40,7 +40,7 @@ export function defineReactive(data,key,val){
             if(val === value){
                 return;
             }
-            console.log(`${key}属性被赋值了，新值为：${value}`);
+            // console.log(`${key}属性被赋值了，新值为：${value}`);
             val = value;
             //当设置了新值，新值也需要调用observe
             childOb = observe(val);
