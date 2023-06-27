@@ -85,10 +85,6 @@ export default class Compile{
                         self.setVueVal(self.$vue,value,newVal);
                         v = newVal;
                     })
-
-                }else if(dir == 'if'){
-                    // console.log('捕捉到v-if指令')
-                    //v-if指令
                 }
             }
         })

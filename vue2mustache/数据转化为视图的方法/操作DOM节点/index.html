@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="list">
+</ul>
+<script>
+    let data = [
+      { "name": "小王","sex": "男","age": 18},
+      { "name": "小明","sex": "男","age": 25},
+      { "name": "小刘","sex": "男","age": 30}
+    ]
+    //获取list节点
+    let list = document.getElementById('list');
+    //循环数组
+    for(let i=0;i<data.length;i++){
+        //创建li标签
+        let li = document.createElement('li');
+        //创建div标签
+        let div1 = document.createElement('div');
+        div1.innerText = data[i].name + "的基本信息";
+        li.appendChild(div1);
+        //创建div标签
+        let div2 = document.createElement('div')
+        li.appendChild(div2);
+        //创建p标签
+        let p1 = document.createElement('p');
+        p1.innerText = "姓名："+data[i].name;
+        div2.appendChild(p1);
+        let p2 = document.createElement('p');
+        p2.innerText = "年龄："+data[i].age;
+        div2.appendChild(p2);
+        let p3 = document.createElement('p');
+        p3.innerText = "性别："+data[i].sex
+        div2.appendChild(p3);
+        //将li标签添加到list上
+        list.appendChild(li)
+    }
+</script>
+</body>
+</html>

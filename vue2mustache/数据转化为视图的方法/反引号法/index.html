@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="list">
+</ul>
+<script>
+    let data = [
+        { "name": "小王","sex": "男","age": 18},
+        { "name": "小明","sex": "男","age": 25},
+        { "name": "小刘","sex": "男","age": 30}
+    ]
+    //获取list节点
+    let list = document.getElementById('list');
+    for(let i=0;i<data.length;i++){
+        list.innerHTML += `
+          <li>
+             <div>${data[i].name}的基本信息</div>
+             <div>
+               <p>姓名：${data[i].name}</p>
+               <p>年龄：${data[i].age}</p>
+               <p>性别：${data[i].sex}</p>
+             </div>
+          </li>
+        `;
+    }
+</script>
+</body>
+</html>
