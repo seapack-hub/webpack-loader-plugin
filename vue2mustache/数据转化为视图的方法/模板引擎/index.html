@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="template">
+</div>
+<script>
+    let str = `<h1>我买了一个{{thing}}，我好{{mood}}</h1>`;
+    let data = {
+        thing:'手机',
+        mood:'开心'
+    }
+    // replace()的第二个参数可以是一个函数，这个函数提供捕获的东西的参数，就是$1
+    function render(templateStr,data){
+        return templateStr.replace(/\{\{(\w+)\}\}/g,function(findStr,$1){
+            return data[$1];
+        })
+    }
+    let div = document.getElementById('template');
+    div.innerHTML = render(str,data);
+</script>
+</body>
+</html>

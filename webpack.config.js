@@ -50,12 +50,13 @@ module.exports = {
     //     ]
     // },
     plugins: [
-        // new HtmlWebpackPlugin({
-        //     title: 'custom-plugin'
-        // }),
-       new HtmlWebpackPlugin({
-           template:'./public/index.html'
-       })
+        //测试v-model指令
+       // new HtmlWebpackPlugin({
+       //     template:'./public/index.html'
+       // })
+         new HtmlWebpackPlugin({
+             template:'./vue2mustache/mustacheTest/index.html'
+         })
     ],
     mode:'development'
 }
