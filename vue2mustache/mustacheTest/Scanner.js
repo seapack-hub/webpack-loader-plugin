@@ -21,10 +21,14 @@ export default class Scanner{
 
     scanUntil(re){
         let startIndex = this.pos;
-        while(this.pos <this.template.length && this.tail.indexOf(re)!=0){
+        while(!this.eos() && this.tail.indexOf(re)!=0){
             this.pos++;
             this.tail = this.template.substring(this.pos);
         }
         return this.template.substring(startIndex,this.pos);
+    }
+
+    eos(){
+        return this.pos>=this.template.length;
     }
 }
