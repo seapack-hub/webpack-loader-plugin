@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // let a = 10;
+    // function add(x){
+    //     let b = 20;
+    //     let a = 30;
+    //     return function f(){
+    //         console.log('a+b+x',a+b+x);
+    //     };
+    // }
+    // let f = add(8)
+    // console.log(add.prototype);
+    // console.log(f.prototype);
+    // f()
+    // var foo = function () {
+    //     console.log('foo1');
+    // }
+    //
+    // foo();
+    //
+    // var foo = function () {
+    //     console.log('foo2');
+    // }
+    //
+    // foo();
+    // console.log(f2);
+    // var f2 = function(){};
+    // console.log(this)
+    //----------------------
+
+    // var color = "blue";
+    // function changeColor(){
+    //     if(color === 'blue'){
+    //         color = "red";
+    //     }else{
+    //         color = "blue";
+    //     }
+    // }
+    // var readColor = function(){
+    //     return color;
+    // }
+    // changeColor();
+    // console.log(readColor());
+
+    //----------------------------
+    // var color = "blue";
+    // function changeColor(color){
+    //     console.log(arguments);
+    //     console.log(color);
+    //     console.log(a);
+    //     var a = color;
+    //     console.log(this);
+    // }
+    // changeColor('blue');
+    // let color = 'blue';
+    // function changeColor(){
+    //     let anotherColor = 'red';
+    //     function swapColors(){
+    //         let tempColor = anotherColor;
+    //         anotherColor = color;
+    //         color = tempColor;
+    //     }
+    //     swapColors();
+    // }
+    // changeColor();
+
+    // function factorial(num){
+    //     if(num<=1){
+    //         return 1;
+    //     }else{
+    //         return num * factorial(num-1);
+    //     }
+    // }
+
+    // function factorial (num, sum = 1) {
+    //     if (num <= 1) return sum;
+    //     return factorial(num - 1, sum * num);
+    // }
+    // function factorial(num){
+    //     if(num <= 1){
+    //         return num;
+    //     }
+    //     let sum = 1;
+    //     for(let i = 2; i<= num; i++){
+    //         sum *= i;
+    //     }
+    //     return sum;
+    // }
+
+    // console.log(factorial(10));
+    // console.log(factorial(100));
+    // console.log(factorial(1000));
+    // console.log(factorial(10000));
+    // console.log(factorial(100000));
+
+    // let color = 'blue';
+    // let scope = 'global';
+    //
+    // function changeColor(){
+    //     let anotherColor = 'red';
+    //
+    //     let scope = 'local';
+    //
+    //     console.log(anotherColor);
+    //     console.log(color);
+    //     console.log(scope)
+    // }
+    //
+    // console.log(scope)
+    // changeColor();
+
+    // scope = "global";
+    //
+    // function test(){
+    //     color = "red";
+    // }
+    // test();
+    //
+    // console.log(color);
+    // console.log(scope);
+
+    // function f1() {
+    //     var n = 5;
+    //     if (true) {
+    //         var n = 10;
+    //     }
+    //     console.log(n);  //10
+    // }
+    // f1();
+
+    // for(var i=0;i<5;i++){
+    //     setTimeout(()=>{
+    //         console.log(i);
+    //     },0)
+    // }
+    //
+    // for(let j=0;j<5;j++){
+    //     setTimeout(()=>{
+    //         console.log(j);
+    //     },0)
+    // }
+
+    // var tmp = 123;
+    //
+    // if (true) {
+    //     tmp = 'abc'; // ReferenceError
+    //     let tmp;
+    // }
+
+    let a = 10;
+
+    function fn(){
+        let b = 20;
+
+        function bar(){
+            console.log(a+b)
+        }
+
+        return bar;
+    }
+
+    let x = fn();
+
+    let b = 100;
+
+    x();
+</script>
+</body>
+</html>
