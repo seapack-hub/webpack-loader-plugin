@@ -1,4 +1,5 @@
 import parseTemplateTOTokens from "./parseTemplateToTokens";
+import renderTemplate from "./renderTemplate";
 export default class Mustache{
     constructor(template,data){
         this.template = template;
@@ -7,7 +8,11 @@ export default class Mustache{
     }
     render(){
         const {template,data} = this;
+        //获取token
         let tokens = parseTemplateTOTokens(template);
-        console.log('---',tokens);
+        //将token与数据结合
+        let templateStr = renderTemplate(tokens,data);
+        console.log(templateStr);
+        // console.log('---',tokens);
     }
 }
