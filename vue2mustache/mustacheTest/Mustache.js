@@ -4,7 +4,6 @@ export default class Mustache{
     constructor(template,data){
         this.template = template;
         this.data = data;
-        this.render();
     }
     render(){
         const {template,data} = this;
@@ -12,7 +11,6 @@ export default class Mustache{
         let tokens = parseTemplateTOTokens(template);
         //将token与数据结合
         let templateStr = renderTemplate(tokens,data);
-        console.log(templateStr);
-        // console.log('---',tokens);
+        return templateStr;
     }
 }

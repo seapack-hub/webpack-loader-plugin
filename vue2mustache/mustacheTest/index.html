@@ -5,21 +5,38 @@
     <title>Title</title>
 </head>
 <body>
-<!--<script src="./index.js"></script>-->
+<div id="app"></div>
 <script>
-    // let template = '<h1>Today {{title}} spends {{calc}} dollar</h1>';
-    // let data = {
-    //       title: "Joe",
-    //       calc: function () {
-    //         return 2 + 4;
-    //       }
-    // };
-    // setTimeout(()=>{
-    //     // let text = new Mustache(template,data);
-    //     // console.log(text)
-    //     let text = mustache.render(template,data);
-    //     console.log(text)
-    // },500)
+    let template = `<ul>
+   {{#arr}}
+    <li>
+       <div>{{name}}的基本信息</div>
+       <div>
+          <p>姓名：{{name}}</p>
+          <p>性别：{{sex}}</p>
+          <p>年龄：{{age}}</p>
+          <p>爱好：{{#hobbies}}<span> {{.}} </span>{{/hobbies}}</p>
+       </div>
+     </li>
+   {{/arr}}
+</ul>`;
+    let data = {
+        title: "Joe",
+        calc:"6",
+        mentality:{
+            positive:"good"
+        },
+        arr:[
+            { name: "小王",sex: "男",age: 18,hobbies:["篮球","羽毛球"]},
+            { name: "小明",sex: "男",age: 25,hobbies: ["王者荣耀","决斗连接"]},
+            { name: "小刘",sex: "男",age: 30,hobbies: ["冲浪","滑雪"]}
+        ]
+    };
+    setTimeout(()=>{
+        let mustache = new Mustache(template,data);
+        let node = document.getElementById('app');
+        node.innerHTML = mustache.render();
+    },500)
 </script>
 </body>
 </html>

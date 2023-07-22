@@ -1,10 +1,10 @@
 import Scanner from "./Scanner";
 import nestTokens from "./nestTokens";
-export default function parseTemplateTOTokens(template){
+export default function parseTemplateToTokens(template){
     let tokens = [];
     let scanner = new Scanner(template);
     let word;
-    while(scanner.pos<template.length){
+    while(!scanner.eos()){
         word = scanner.scanUntil('{{');
         if(word != ""){
             tokens.push(['text',word]);

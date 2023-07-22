@@ -28,7 +28,6 @@ export default function nestTokens(tokens){
                 sections.pop();
                 //每次出栈说明该层循环遍历完成，改变collector的指向，将其指回上一层
                 collector = sections.length>0? sections[sections.length-1][2]:nestTokens;
-                // console.log(aa+'，出栈了');
                 break;
             default:
                 collector.push(token);

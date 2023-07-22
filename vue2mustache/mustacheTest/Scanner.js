@@ -10,10 +10,6 @@ export default class Scanner{
         this.pos = 0;
         //待扫描字符串
         this.tail = this.template;
-        //开始位置
-        this.startIndex = 0;
-        //结束位置
-        this.endIndex = 0;
     }
 
     /**
@@ -22,7 +18,6 @@ export default class Scanner{
      * @returns {string|*}
      */
     scan(re){
-        this.startIndex = this.pos;
         //匹配匹配待字符串中是否有 re
         let match = this.tail.match(re);
 
@@ -72,14 +67,8 @@ export default class Scanner{
         //指针pos前进扫描字符的长度
         this.pos += match.length;
 
+        //返回扫描的字符串
         return match;
-        // let startIndex = this.pos;
-        // while(!this.eos() && this.tail.indexOf(re)!=0){
-        //     this.pos++;
-        //     this.tail = this.template.substring(this.pos);
-        // }
-        // this.endIndex = this.pos;
-        // return this.template.substring(startIndex,this.pos);
     }
 
     /**
@@ -87,6 +76,6 @@ export default class Scanner{
      * @returns {boolean}
      */
     eos(){
-        return this.pos == '';
+        return this.tail == '';
     }
 }
