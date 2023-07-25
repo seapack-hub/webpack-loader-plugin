@@ -153,23 +153,95 @@
     //     let tmp;
     // }
 
-    let a = 10;
+    // let a = 10;
+    //
+    // function fn(){
+    //     let b = 20;
+    //
+    //     function bar(){
+    //         console.log(a+b)
+    //     }
+    //
+    //     return bar;
+    // }
+    //
+    // let x = fn();
+    //
+    // let b = 100;
+    //
+    // x();
 
-    function fn(){
-        let b = 20;
+    // let arr = [];
+    // function fn(n){
+    //     if(typeof n != 'number')
+    //         return "";
+    //     if(n < 0)
+    //         return ""
+    //     if(n == 0 || n == 1)
+    //         return 1;
+    //     let a = 1,b=1,c=1;
+    //     for(let i = 3;i<=n;i++){
+    //         c = a + b;
+    //         a=b;
+    //         b=c;
+    //     }
+    //     return c;
+    // }
+    //
+    // console.log(fn(5));
+    //
+    // console.log(fn('123'));
 
-        function bar(){
-            console.log(a+b)
+    // //缓存
+    // let cache = {}
+    //
+    // //递归
+    // function fn(n){
+    //     if(typeof n != 'number')
+    //         return "";
+    //     if(n < 0)
+    //         return ""
+    //     if(cache.hasOwnProperty(n)){
+    //         return cache[n];
+    //     }
+    //     let value =  n==1||n==2 ? 1 : fn(n-1)+fn(n-2);
+    //     cache[n] = value;
+    //     return value;
+    // }
+    //
+    // console.log(fn(5))
+
+    let arr = [1,2,3,[4,5,[6,7],8],9];
+
+    // let result = [];
+    function fn(arr){
+        if(Array.isArray(arr)){
+            return {children:convert(arr)}
+        }else if(typeof arr == 'number'){
+            return {value:arr}
         }
-
-        return bar;
+        function convert(arr){
+            let result = [];
+            for(let i=0;i<arr.length;i++){
+                if(typeof arr[i] == 'number'){
+                    result.push({value:arr[i]});
+                }else if(Array.isArray(arr[i])){
+                    result.push({children:convert(arr[i])});
+                }
+            }
+            return result;
+        }
     }
+    console.log(fn(arr));
 
-    let x = fn();
-
-    let b = 100;
-
-    x();
+    // function fn(item){
+    //     if(typeof item == 'number'){
+    //         return {value:item}
+    //     }else if(Array.isArray(item)){
+    //         return {children:item.map(e=>fn(e))};
+    //     }
+    // }
+    // console.log(fn(arr))
 </script>
 </body>
 </html>
